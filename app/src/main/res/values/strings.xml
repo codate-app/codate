@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">codate</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="search_fragment_label">찾기</string>
+    <string name="explore_fragment_label">탐색</string>
+    <string name="like_fragment_label">좋아요</string>
+    <string name="chat_fragment_label">채팅</string>
+    <string name="info_fragment_label">정보</string>
+    <string name="notifications">알림</string>
+</resources>
