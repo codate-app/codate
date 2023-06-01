@@ -1,4 +1,4 @@
-package com.donxux.codate.presentation
+package com.donxux.codate.presentation.view.explore
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,23 +6,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.donxux.codate.databinding.FragmentInfoBinding
-import com.donxux.codate.presentation.viewmodel.InfoViewModel
+import com.donxux.codate.databinding.FragmentExploreBinding
+import com.donxux.codate.presentation.viewmodel.ExploreViewModel
 
-class InfoFragment : Fragment() {
-    private var _binding: FragmentInfoBinding? = null
+class ExploreFragment : Fragment() {
+
+    private var _binding: FragmentExploreBinding? = null
 
     private val binding get() = _binding!!
 
-    private lateinit var viewModel: InfoViewModel
+    private lateinit var viewModel: ExploreViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentInfoBinding.inflate(inflater, container, false)
-        viewModel = ViewModelProvider(this)[InfoViewModel::class.java]
+        _binding = FragmentExploreBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(this)[ExploreViewModel::class.java]
         return binding.root
     }
 

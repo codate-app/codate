@@ -1,4 +1,4 @@
-package com.donxux.codate.presentation
+package com.donxux.codate.presentation.view.chat
 
 import android.os.Bundle
 import android.view.LayoutInflater

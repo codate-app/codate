@@ -1,0 +1,51 @@
+package com.donxux.codate.presentation.viewmodel
+
+import androidx.lifecycle.ViewModel
+import com.donxux.codate.domain.model.Field
+import com.donxux.codate.domain.model.User
+import com.donxux.codate.domain.model.userOf
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+
+class MatchingViewModel : ViewModel() {
+
+    private val _partners: MutableStateFlow<List<User>> = MutableStateFlow(testPartners1)
+    val partners: StateFlow<List<User>> get() = _partners.asStateFlow()
+    private var flag: Boolean = false
+
+    fun updatePartners() {
+        if (flag) {
+            _partners.value = testPartners1
+        } else {
+            _partners.value = testPartners2
+        }
+        flag = flag.not()
+    }
+}
+
+private val testPartners1 = listOf(
+    userOf(name = "test1", age = 23, fields = listOf(Field.Android), bio = "안녕하세요"),
+    userOf(name = "test2", age = 23, fields = listOf(Field.Android), bio = "안녕하세요"),
+    userOf(name = "test3", age = 23, fields = listOf(Field.Android), bio = "안녕하세요"),
+    userOf(name = "test4", age = 23, fields = listOf(Field.Android), bio = "안녕하세요"),
+    userOf(name = "test5", age = 23, fields = listOf(Field.Android), bio = "안녕하세요"),
+    userOf(name = "test6", age = 23, fields = listOf(Field.Android), bio = "안녕하세요"),
+    userOf(name = "test7", age = 23, fields = listOf(Field.Android), bio = "안녕하세요"),
+    userOf(name = "test8", age = 23, fields = listOf(Field.Android), bio = "안녕하세요"),
+    userOf(name = "test9", age = 23, fields = listOf(Field.Android), bio = "안녕하세요"),
+    userOf(name = "test10", age = 23, fields = listOf(Field.Android), bio = "안녕하세요")
+)
+
+private val testPartners2 = listOf(
+    userOf(name = "test11", age = 23, fields = listOf(Field.Android), bio = "안녕하세요"),
+    userOf(name = "test12", age = 23, fields = listOf(Field.Android), bio = "안녕하세요"),
+    userOf(name = "test13", age = 23, fields = listOf(Field.Android), bio = "안녕하세요"),
+    userOf(name = "test14", age = 23, fields = listOf(Field.Android), bio = "안녕하세요"),
+    userOf(name = "test15", age = 23, fields = listOf(Field.Android), bio = "안녕하세요"),
+    userOf(name = "test16", age = 23, fields = listOf(Field.Android), bio = "안녕하세요"),
+    userOf(name = "test17", age = 23, fields = listOf(Field.Android), bio = "안녕하세요"),
+    userOf(name = "test18", age = 23, fields = listOf(Field.Android), bio = "안녕하세요"),
+    userOf(name = "test19", age = 23, fields = listOf(Field.Android), bio = "안녕하세요"),
+    userOf(name = "test20", age = 23, fields = listOf(Field.Android), bio = "안녕하세요")
+)

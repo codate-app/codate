@@ -1,4 +1,4 @@
-package com.donxux.codate.presentation
+package com.donxux.codate.presentation.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
