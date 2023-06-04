@@ -1,5 +1,6 @@
 package com.donxux.codate.presentation.view.explore
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,11 @@ class ExploreFragment : Fragment() {
 
     private lateinit var viewModel: ExploreViewModel
 
+    companion object {
+        const val maxRowOnPortrait = 2
+        const val maxRowOnLandscape = 4
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -24,6 +30,15 @@ class ExploreFragment : Fragment() {
     ): View {
         _binding = FragmentExploreBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[ExploreViewModel::class.java]
+
+        binding.exploreFlow.setMaxElementsWrap(
+            if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                maxRowOnLandscape
+            } else {
+                maxRowOnPortrait
+            }
+        )
+
         return binding.root
     }
 

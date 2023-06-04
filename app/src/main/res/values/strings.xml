@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">codate</string>
+    <string name="app_name">Codate</string>
     <!-- Strings used for fragments for navigation -->
     <string name="search_fragment_label">찾기</string>
     <string name="explore_fragment_label">탐색</string>

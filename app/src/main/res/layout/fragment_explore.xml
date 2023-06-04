@@ -13,14 +13,60 @@
             android:layout_height="match_parent"
             android:padding="16dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/explore_fragment_label"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/explore_flow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:constraint_referenced_ids="explore_card1,explore_card2,explore_card3,explore_card4,explore_card5,explore_card6"
+                app:flow_horizontalGap="16dp"
+                app:flow_maxElementsWrap="2"
+                app:flow_verticalGap="16dp"
+                app:flow_wrapMode="aligned">
+
+            </androidx.constraintlayout.helper.widget.Flow>
+
+            <com.donxux.codate.presentation.view.explore.ExploreCardView
+                android:id="@+id/explore_card1"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                app:background="@drawable/gradient_explore_card"
+                app:title="Frontend" />
+
+            <com.donxux.codate.presentation.view.explore.ExploreCardView
+                android:id="@+id/explore_card2"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                app:background="@drawable/gradient_explore_card"
+                app:title="Backend" />
+
+            <com.donxux.codate.presentation.view.explore.ExploreCardView
+                android:id="@+id/explore_card3"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                app:background="@drawable/gradient_explore_card"
+                app:title="Android" />
+
+            <com.donxux.codate.presentation.view.explore.ExploreCardView
+                android:id="@+id/explore_card4"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                app:background="@drawable/gradient_explore_card"
+                app:title="iOS" />
+
+            <com.donxux.codate.presentation.view.explore.ExploreCardView
+                android:id="@+id/explore_card5"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                app:background="@drawable/gradient_explore_card"
+                app:title="AI" />
+
+            <com.donxux.codate.presentation.view.explore.ExploreCardView
+                android:id="@+id/explore_card6"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                app:background="@drawable/gradient_explore_card"
+                app:title="Embedded" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>
