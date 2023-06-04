@@ -41,7 +41,7 @@ class PartnerCardsAdapter(
 
     override fun createFragment(position: Int): Fragment {
         return if (position < items.size - 1) {
-            PartnerCardFragment.newInstance(items[position])
+            PartnerCardFragment.newInstance(position)
         } else {
             PartnerCardProgressFragment.newInstance()
         }
