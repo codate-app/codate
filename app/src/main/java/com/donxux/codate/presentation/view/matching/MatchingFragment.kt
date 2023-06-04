@@ -32,7 +32,7 @@ class MatchingFragment : Fragment() {
 
         val partners = viewModel.partners.value
         partnerCardsAdapter =
-            PartnerCardsAdapter(partners.toMutableList())
+            PartnerCardsAdapter(requireActivity(), partners.toMutableList())
         binding.searchPartnerCardsPager.adapter = partnerCardsAdapter
 
         binding.searchPartnerCardsPager.registerOnPageChangeCallback(object :
