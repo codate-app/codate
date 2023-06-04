@@ -7,4 +7,12 @@
     <string name="chat_fragment_label">채팅</string>
     <string name="info_fragment_label">정보</string>
     <string name="notifications">알림</string>
+    <string name="close">취소</string>
+    <string name="login">로그인</string>
+    <string name="github_login">Github 로그인</string>
+    <string name="email">이메일</string>
+    <string name="password">비밀번호</string>
+    <string name="signup">회원가입</string>
+    <string name="find_email">이메일 찾기</string>
+    <string name="find_password">비밀번호 찾기</string>
 </resources>

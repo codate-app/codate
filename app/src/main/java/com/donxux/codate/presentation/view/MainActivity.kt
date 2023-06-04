@@ -1,5 +1,6 @@
 package com.donxux.codate.presentation.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
@@ -41,7 +42,20 @@ class MainActivity : AppCompatActivity() {
         binding.mainBottomNavigation.setupWithNavController(navController)
 
         binding.mainBottomNavigation.setOnItemSelectedListener {
-            it.onNavDestinationSelected(navController)
+            when (it.itemId) {
+                R.id.like, R.id.chat, R.id.info -> {
+                    goToLoginActivity()
+                    false
+                }
+
+                else -> it.onNavDestinationSelected(navController)
+            }
         }
+    }
+
+    private fun goToLoginActivity() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_up, R.anim.stay_in_place)
     }
 }
