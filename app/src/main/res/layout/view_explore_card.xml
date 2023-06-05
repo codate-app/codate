@@ -12,7 +12,7 @@
             android:id="@+id/explore_background_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/light_grey"
+            android:background="@color/grey300"
             tools:background="@drawable/gradient_explore_card" />
 
         <com.google.android.material.textview.MaterialTextView

@@ -29,7 +29,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:menu="@menu/menu_main_app_bar"
-                app:title="@string/app_name">
+                app:title="@string/app_name"
+                app:titleTextColor="@color/grey500">
 
 
             </com.google.android.material.appbar.MaterialToolbar>
@@ -53,7 +54,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:background="@drawable/nav_background"
             android:fitsSystemWindows="true"
+            app:itemActiveIndicatorStyle="@null"
+            app:itemIconTint="@color/nav_item_color"
+            app:itemRippleColor="@null"
             app:labelVisibilityMode="unlabeled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
