@@ -3,4 +3,19 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="light_grey">#FFC9C9C9</color>
+    <color name="pink50">#fce4ec</color>
+    <color name="pink100">#f8bbd0</color>
+    <color name="pink200">#f48fb1</color>
+    <color name="pink300">#f06292</color>
+    <color name="pink400">#ec407a</color>
+    <color name="pink500">#e91e63</color>
+    <color name="pink600">#d81b60</color>
+    <color name="pink700">#c2185b</color>
+    <color name="pink800">#ad1457</color>
+    <color name="pink900">#880e4f</color>
+    <color name="pink_a100">#ff80ab</color>
+    <color name="pink_a200">#ff4081</color>
+    <color name="pink_a400">#f50057</color>
+    <color name="pink_a700">#c51162</color>
+    <color name="sky">#FF6094EA</color>
 </resources>
