@@ -16,6 +16,7 @@
         android:padding="16dp">
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -35,21 +36,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:background="@drawable/gradient_partner_card"
-                    app:layout_constraintVertical_bias="1.0"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
 
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/search_partner_card_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:shadowColor="@color/black"
+                    android:shadowRadius="4"
                     android:text="@{user.name}"
                     android:textColor="@color/white"
-                    android:textSize="24sp"
                     android:textFontWeight="600"
+                    android:textSize="24sp"
                     app:layout_constraintBottom_toTopOf="@+id/chipGroup"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.056"
@@ -63,6 +66,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
+                    android:shadowColor="@color/black"
+                    android:shadowRadius="4"
                     android:text="@{Integer.toString(user.age)}"
                     android:textColor="@color/white"
                     android:textSize="20sp"
@@ -79,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="16dp"
                     android:paddingVertical="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/view_code"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent">
 
@@ -87,15 +92,22 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Android"
+                        android:textColor="@color/white"
+                        android:textFontWeight="200"
+                        android:textSize="12sp"
+                        app:chipBackgroundColor="#33000000"
+                        app:chipCornerRadius="16dp"
+                        app:chipStrokeWidth="0dp"
                         app:layout_constraintBottom_toBottomOf="@+id/view_code"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/search_partner_card_name"
                         app:layout_constraintTop_toBottomOf="@+id/search_partner_card_name"
+                        app:rippleColor="@null"
                         tools:text="Android" />
                 </com.google.android.material.chip.ChipGroup>
-
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

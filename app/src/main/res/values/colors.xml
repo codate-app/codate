@@ -33,5 +33,9 @@
     <color name="pink_a400">#f50057</color>
     <color name="pink_a700">#c51162</color>
 
+    <color name="purple">#CF13F5</color>
+
     <color name="sky">#FF6094EA</color>
+
+    <color name="close_button_color">#ff616161</color>
 </resources>
