@@ -10,10 +10,14 @@
             type="com.donxux.codate.presentation.viewmodel.MatchingViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/matching_root_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layoutDescription="@xml/fragment_matching_xml_matching_root_layout_scene"
         tools:context=".presentation.view.matching.MatchingFragment">
+
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/search_partner_cards_pager"
@@ -24,7 +28,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/main_unlike_button"
             style="@style/Widget.Material3.Button.IconButton.Filled"
@@ -32,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="24dp"
             app:backgroundTint="#00ffffff"
             app:elevation="8dp"
             app:icon="@drawable/ic_close"
@@ -53,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="24dp"
             android:background="@drawable/oval_button_background"
             app:backgroundTint="@null"
             app:elevation="8dp"
@@ -65,6 +68,8 @@
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toEndOf="@+id/main_unlike_button"
             app:layout_constraintTop_toBottomOf="@+id/search_partner_cards_pager" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+
 
 </layout>

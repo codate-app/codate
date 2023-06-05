@@ -10,10 +10,12 @@
             type="com.donxux.codate.presentation.viewmodel.MainViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/main_root_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
+        app:layoutDescription="@xml/activity_main_xml_main_root_layout_scene"
         tools:context=".presentation.view.MainActivity">
 
         <com.google.android.material.appbar.AppBarLayout
@@ -63,5 +65,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/menu_main_bottom_nav" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>
