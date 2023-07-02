@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="chat"
+            type="com.donxux.codate.domain.model.Chat" />
+
+        <import type="java.time.ZonedDateTime" />
+
+        <import type="android.view.View" />
+
+        <import
+            alias="InstantExtension"
+            type="com.donxux.codate.utils.InstantUtilsKt" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/chat_profile_image"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_github"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/ShapeAppearanceOverlay.Codate.Button.Circle"
+            tools:src="@drawable/ic_github" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/chat_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/suit_medium"
+            android:text="@{chat.name}"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/chat_recent_message"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/chat_profile_image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="이동욱" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/chat_recent_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{chat.recentMessage}"
+            android:textColor="@color/grey500"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/chat_date"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/chat_name"
+            app:layout_constraintTop_toBottomOf="@+id/chat_name"
+            tools:text="자니? ... 요새 너 생각 많이 나길래 연락해봤어 요새 뭐하고 지내? 잘 지내고 있어? 나 너보려고 서울로 올라왔는데 한번만 만나주면안될까?" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/chat_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="2dp"
+            android:text="@{InstantExtension.toTimeForChat(chat.date, ZonedDateTime.now())}"
+            android:textColor="@color/grey500"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toTopOf="@+id/chat_message_count"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="14:30" />
+
+        <com.donxux.codate.presentation.view.custom.Badge
+            android:id="@+id/chat_message_count"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/chat_count_background"
+            android:fontFamily="@font/suit_semi_bold"
+            android:gravity="center"
+            android:paddingHorizontal="4dp"
+            android:text="@{Integer.toString(chat.messageCount)}"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:visibility="@{chat.messageCount == 0 ? View.INVISIBLE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/chat_date"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/chat_date"
+            app:layout_constraintTop_toBottomOf="@+id/chat_date"
+            tools:text="1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

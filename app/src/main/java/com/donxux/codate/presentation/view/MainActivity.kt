@@ -1,11 +1,10 @@
 package com.donxux.codate.presentation.view
 
-import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.view.WindowCompat
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -15,16 +14,19 @@ import androidx.navigation.ui.setupWithNavController
 import com.donxux.codate.R
 import com.donxux.codate.databinding.ActivityMainBinding
 import com.donxux.codate.presentation.viewmodel.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
-    private lateinit var mainViewModel: MainViewModel
+    private val mainViewModel by viewModels<MainViewModel>()
     private lateinit var navController: NavController
 
     val motionProgress = Channel<Float>()
+    var lockedMotion = false
     var lockedNavigate = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,8 +56,10 @@ class MainActivity : AppCompatActivity() {
                 endId: Int,
                 progress: Float
             ) {
-                lifecycleScope.launch {
-                    motionProgress.send(progress)
+                if (lockedMotion.not()) {
+                    lifecycleScope.launch {
+                        motionProgress.send(progress)
+                    }
                 }
             }
 
@@ -74,14 +78,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun lockMotionOfRootLayout() {
         binding.mainRootLayout.setTransition(R.id.start, R.id.start)
+        lockedMotion = true
     }
 
     private fun unlockMotionOfRootLayout() {
         binding.mainRootLayout.setTransition(R.id.start, R.id.end)
+        lockedMotion = false
     }
 
     private fun setMainViewModel() {
-        mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
         binding.mainViewModel = mainViewModel
     }
 
@@ -98,12 +103,6 @@ class MainActivity : AppCompatActivity() {
                     it.onNavDestinationSelected(navController)
                 }
 
-                R.id.like, R.id.chat, R.id.info -> {
-                    lockMotionOfRootLayout()
-                    goToLoginActivity()
-                    false
-                }
-
                 else -> {
                     if (lockedNavigate) {
                         false
@@ -116,11 +115,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun goToLoginActivity() {
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
-        overridePendingTransition(R.anim.slide_up, R.anim.stay_in_place)
-    }
+//    private fun goToLoginActivity() {
+//        val intent = Intent(this, LoginActivity::class.java)
+//        startActivity(intent)
+//        overridePendingTransition(R.anim.slide_up, R.anim.stay_in_place)
+//    }
 
     override fun onDestroy() {
         super.onDestroy()

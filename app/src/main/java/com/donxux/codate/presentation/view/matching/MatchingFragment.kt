@@ -30,7 +30,7 @@ class MatchingFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?,
+        savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMatchingBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[MatchingViewModel::class.java]
@@ -43,14 +43,14 @@ class MatchingFragment : Fragment() {
         setReceiveProgressOfMainActivityMotion()
 
         binding.searchPartnerCardsPager.registerOnPageChangeCallback(object :
-            OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                if (position == partners.size) {
-                    viewModel.updatePartners()
+                OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    if (position == partners.size) {
+                        viewModel.updatePartners()
+                    }
                 }
-            }
-        })
+            })
 
         lifecycleScope.launch {
             viewModel.partners.collect {
@@ -77,14 +77,14 @@ class MatchingFragment : Fragment() {
             override fun onTransitionStarted(
                 motionLayout: MotionLayout?,
                 startId: Int,
-                endId: Int,
+                endId: Int
             ) = Unit
 
             override fun onTransitionChange(
                 motionLayout: MotionLayout?,
                 startId: Int,
                 endId: Int,
-                progress: Float,
+                progress: Float
             ) = Unit
 
             override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) = Unit
@@ -93,7 +93,7 @@ class MatchingFragment : Fragment() {
                 motionLayout: MotionLayout?,
                 triggerId: Int,
                 positive: Boolean,
-                progress: Float,
+                progress: Float
             ) = Unit
         })
     }
