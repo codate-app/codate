@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.donxux.codate.presentation.viewmodel.LikeViewModel" />
+    </data>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -10,17 +17,44 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_margin="16dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/like_fragment_label"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/like_flow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:constraint_referenced_ids="like_card1,like_card2,like_card3,like_card4"
+                app:flow_horizontalGap="16dp"
+                app:flow_maxElementsWrap="2"
+                app:flow_verticalGap="16dp"
+                app:flow_wrapMode="aligned">
 
+            </androidx.constraintlayout.helper.widget.Flow>
+
+            <com.donxux.codate.presentation.view.like.ProfileCardView
+                android:id="@+id/like_card1"
+                android:layout_width="0dp"
+                android:layout_height="250dp"
+                app:name="test1" />
+
+            <com.donxux.codate.presentation.view.like.ProfileCardView
+                android:id="@+id/like_card2"
+                android:layout_width="0dp"
+                android:layout_height="250dp"
+                app:name="test2" />
+
+            <com.donxux.codate.presentation.view.like.ProfileCardView
+                android:id="@+id/like_card3"
+                android:layout_width="0dp"
+                android:layout_height="250dp"
+                app:name="test3" />
+
+            <com.donxux.codate.presentation.view.like.ProfileCardView
+                android:id="@+id/like_card4"
+                android:layout_width="0dp"
+                android:layout_height="250dp"
+                app:name="test4" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>
