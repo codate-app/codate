@@ -14,7 +14,4 @@ interface ChatDao {
 
     @Query("SELECT * FROM chats")
     fun getChats(): List<Chat>
-
-    @Query("DELETE FROM chats")
-    suspend fun clearRepos()
 }

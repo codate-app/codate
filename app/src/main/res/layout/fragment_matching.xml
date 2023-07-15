@@ -10,66 +10,113 @@
             type="com.donxux.codate.presentation.viewmodel.MatchingViewModel" />
     </data>
 
-
-    <androidx.constraintlayout.motion.widget.MotionLayout
-        android:id="@+id/matching_root_layout"
+    <com.donxux.codate.presentation.view.custom.ToggleableScrollView
+        android:id="@+id/matching_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutDescription="@xml/fragment_matching_xml_matching_root_layout_scene"
-        tools:context=".presentation.view.matching.MatchingFragment">
+        android:fillViewport="true"
+        app:scroll_enabled="false">
 
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/search_partner_cards_pager"
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/matching_motion_layout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/main_like_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/main_unlike_button"
-            style="@style/Widget.Material3.Button.IconButton.Filled"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="24dp"
-            app:backgroundTint="#00ffffff"
-            app:elevation="8dp"
-            app:icon="@drawable/ic_close"
-            app:iconSize="32dp"
-            app:iconTint="@color/close_button_color"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/main_like_button"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/search_partner_cards_pager"
-            app:strokeColor="@color/close_button_color"
-            app:strokeWidth="2dp" />
+            app:layoutDescription="@xml/fragment_matching_xml_matching_root_layout_scene"
+            tools:context=".presentation.view.matching.MatchingFragment">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/main_like_button"
-            style="@style/Widget.Material3.Button.IconButton.Filled"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/oval_button_background"
-            app:backgroundTint="@null"
-            app:elevation="8dp"
-            app:icon="@drawable/ic_heart"
-            app:iconSize="32dp"
-            app:iconTint="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toEndOf="@+id/main_unlike_button"
-            app:layout_constraintTop_toBottomOf="@+id/search_partner_cards_pager" />
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/matching_search_partner_cards_pager"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/matching_like_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.motion.widget.MotionLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/matching_unlike_button"
+                style="@style/Widget.Material3.Button.IconButton.Filled"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="24dp"
+                app:backgroundTint="#00ffffff"
+                app:elevation="8dp"
+                app:icon="@drawable/ic_close"
+                app:iconSize="32dp"
+                app:iconTint="@color/close_button_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/matching_like_button"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/matching_search_partner_cards_pager"
+                app:strokeColor="@color/close_button_color"
+                app:strokeWidth="2dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/matching_like_button"
+                style="@style/Widget.Material3.Button.IconButton.Filled"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/oval_button_background"
+                app:backgroundTint="@null"
+                app:elevation="8dp"
+                app:icon="@drawable/ic_heart"
+                app:iconSize="32dp"
+                app:iconTint="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@+id/matching_unlike_button"
+                app:layout_constraintTop_toBottomOf="@+id/matching_search_partner_cards_pager" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/matching_profile_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/matching_like_button">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/matching_profile_detail_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="16dp"
+                    android:text="@{viewModel.currentPartner.name}"
+                    android:textSize="40sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="name" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/matching_profile_detail_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{Integer.toString(viewModel.currentPartner.age)}"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/matching_profile_detail_name"
+                    app:layout_constraintStart_toEndOf="@+id/matching_profile_detail_name"
+                    app:layout_constraintTop_toTopOf="@+id/matching_profile_detail_name"
+                    app:layout_constraintVertical_bias="0.8" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/matching_profile_detail_bio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="@{viewModel.currentPartner.bio}"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/matching_profile_detail_age" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.motion.widget.MotionLayout>
+    </com.donxux.codate.presentation.view.custom.ToggleableScrollView>
 
 
 </layout>

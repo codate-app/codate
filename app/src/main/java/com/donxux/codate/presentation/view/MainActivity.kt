@@ -40,6 +40,10 @@ class MainActivity : AppCompatActivity() {
         setRootLayoutTransitionListener()
     }
 
+    fun transitionToStartRootLayout() {
+        binding.mainRootLayout.transitionToStart()
+    }
+
     private fun setRootLayoutTransitionListener() {
         binding.mainRootLayout.setTransitionListener(object : MotionLayout.TransitionListener {
             override fun onTransitionStarted(

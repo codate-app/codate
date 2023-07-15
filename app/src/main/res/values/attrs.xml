@@ -8,4 +8,8 @@
     <declare-styleable name="ProfileCardView">
         <attr name="name" format="string" />
     </declare-styleable>
+
+    <declare-styleable name="ToggleableScrollView">
+        <attr name="scroll_enabled" format="boolean" />
+    </declare-styleable>
 </resources>

@@ -12,6 +12,10 @@ class MatchingViewModel : ViewModel() {
 
     private val _partners: MutableStateFlow<List<User>> = MutableStateFlow(testPartners1)
     val partners: StateFlow<List<User>> get() = _partners.asStateFlow()
+
+    private val _currentPartner: MutableStateFlow<User> = MutableStateFlow(partners.value[0])
+    val currentPartner: StateFlow<User> get() = _currentPartner.asStateFlow()
+
     private var flag: Boolean = false
 
     fun updatePartners() {
@@ -22,6 +26,10 @@ class MatchingViewModel : ViewModel() {
         }
         flag = flag.not()
     }
+
+    fun setCurrentPartner(index: Int) {
+        _currentPartner.value = _partners.value[index].copy()
+    }
 }
 
 private val testPartners1 = listOf(
@@ -30,14 +38,33 @@ private val testPartners1 = listOf(
         age = 23,
         fields = listOf(Field.Android),
         codeUrl = "<script src=\"https://gist.github.com/DONXUX/3df7a8ca9438b1107a7186f92c66f97f.js\"></script>",
-        bio = "안녕하세요"
+        bio = "안녕하세요\nsdfsdfjsdflaksdjflksdaklfjsdaklfjsdaf"
     ),
     userOf(
         name = "test2",
         age = 23,
         fields = listOf(Field.Android),
         codeUrl = "<script src=\"https://gist.github.com/DONXUX/f3e8d3ff2e9e09c58cf5bb4e1a145f06.js\"></script>",
-        bio = "안녕하세요"
+        bio = "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요\n" +
+            "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요\n" +
+            "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요\n" +
+            "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요\n" +
+            "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요\n" +
+            "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요\n" +
+            "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요\n" +
+            "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요\n" +
+            "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요\n" +
+            "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요\n" +
+            "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요\n" +
+            "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요\n" +
+            "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요\n" +
+            "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요\n" +
+            "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요\n" +
+            "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요\n" +
+            "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요\n" +
+            "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요\n" +
+            "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요\n" +
+            "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요\n"
     ),
     userOf(
         name = "test3",
