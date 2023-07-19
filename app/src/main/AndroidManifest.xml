@@ -31,6 +31,9 @@
         <activity
             android:name=".presentation.view.LoginActivity"
             android:theme="@style/Theme.Codate" />
+        <activity
+            android:name=".presentation.view.chat.ChatMessageListActivity"
+            android:label="@style/Theme.Codate" />
     </application>
 
 </manifest>

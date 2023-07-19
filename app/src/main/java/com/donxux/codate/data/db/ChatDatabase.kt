@@ -5,10 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.donxux.codate.domain.model.Chat
+import com.donxux.codate.domain.model.ChatRoom
 
 @Database(
-    entities = [Chat::class],
+    entities = [ChatRoom::class],
     version = 1,
     exportSchema = false
 )

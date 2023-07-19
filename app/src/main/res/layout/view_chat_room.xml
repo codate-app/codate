@@ -7,7 +7,7 @@
 
         <variable
             name="chat"
-            type="com.donxux.codate.domain.model.Chat" />
+            type="com.donxux.codate.domain.model.ChatRoom" />
 
         <import type="java.time.ZonedDateTime" />
 
@@ -19,6 +19,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/chat_root"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

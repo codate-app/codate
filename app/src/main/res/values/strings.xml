@@ -13,6 +13,8 @@
     <string name="email">이메일</string>
     <string name="password">비밀번호</string>
     <string name="signup">회원가입</string>
+    <string name="search">검색</string>
     <string name="find_email">이메일 찾기</string>
     <string name="find_password">비밀번호 찾기</string>
+    <string name="enter_message">메시지를 입력해주세요</string>
 </resources>

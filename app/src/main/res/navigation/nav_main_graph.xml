@@ -22,9 +22,9 @@
         tools:layout="@layout/fragment_like" />
     <fragment
         android:id="@+id/chat"
-        android:name="com.donxux.codate.presentation.view.chat.ChatFragment"
+        android:name="com.donxux.codate.presentation.view.chat.ChatRoomListFragment"
         android:label="@string/chat_fragment_label"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_chat_room_list" />
     <fragment
         android:id="@+id/info"
         android:name="com.donxux.codate.presentation.view.info.InfoFragment"

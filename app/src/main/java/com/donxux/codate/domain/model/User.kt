@@ -9,7 +9,7 @@ data class User(
     val imageUrl: String,
     val fields: List<Field>,
     val codeUrl: String,
-    val bio: String,
+    val bio: String
 )
 
 @Suppress("LongParameterList")
@@ -19,7 +19,7 @@ fun userOf(
     image: String = "",
     fields: List<Field>,
     codeUrl: String,
-    bio: String,
+    bio: String
 ) =
     User(
         id = UUID.randomUUID().toString(),

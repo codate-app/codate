@@ -9,8 +9,9 @@ import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
 
 @HiltViewModel
-class ChatViewModel @Inject constructor(private val chatRepository: ChatRepository) : ViewModel() {
-    fun getChatPagingData() = chatRepository.getChatPagingData().cachedIn(
+class ChatRoomListViewModel @Inject constructor(private val chatRepository: ChatRepository) :
+    ViewModel() {
+    fun getChatRoomsPagingData() = chatRepository.getChatRoomsPagingData().cachedIn(
         CoroutineScope(Dispatchers.IO)
     )
 }

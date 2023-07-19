@@ -10,7 +10,7 @@ import java.time.ZonedDateTime
 
 @Serializable
 @Entity(tableName = "chats")
-data class Chat(
+data class ChatRoom(
     @PrimaryKey
     @ColumnInfo(name = "id")
     val id: Long,

@@ -1,7 +1,7 @@
 package com.donxux.codate.presentation.view.chat
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,64 +10,66 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.donxux.codate.databinding.FragmentChatBinding
-import com.donxux.codate.presentation.viewmodel.ChatViewModel
+import com.donxux.codate.databinding.FragmentChatRoomListBinding
+import com.donxux.codate.presentation.viewmodel.ChatRoomListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class ChatFragment : Fragment() {
-    private var _binding: FragmentChatBinding? = null
+class ChatRoomListFragment : Fragment() {
+    private var _binding: FragmentChatRoomListBinding? = null
 
     private val binding get() = _binding!!
 
-    private val chatViewModel by viewModels<ChatViewModel>()
+    private val chatRoomViewModel by viewModels<ChatRoomListViewModel>()
 
-    private var chatAdapter: ChatAdapter? = null
+    private var chatRoomListAdapter: ChatRoomListAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentChatBinding.inflate(inflater, container, false)
+        _binding = FragmentChatRoomListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        chatAdapter = ChatAdapter(ChatComparator)
+        chatRoomListAdapter = ChatRoomListAdapter(ChatRoomComparator) { id ->
+            val intent = Intent(requireActivity(), ChatMessageListActivity::class.java).apply {
+                putExtra(ChatMessageListActivity.idKey, id)
+            }
+            startActivity(intent)
+        }
         binding.chatChatList.layoutManager = LinearLayoutManager(requireContext())
-        binding.chatChatList.adapter = chatAdapter
-        collectChats()
+        binding.chatChatList.adapter = chatRoomListAdapter
+        collectChatRooms()
         collectChatAdapter()
     }
 
-    private fun collectChats() {
+    private fun collectChatRooms() {
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-            chatViewModel.getChatPagingData().collectLatest(chatAdapter!!::submitData)
+            chatRoomViewModel.getChatRoomsPagingData().collectLatest(chatRoomListAdapter!!::submitData)
         }
     }
 
     private fun collectChatAdapter() = viewLifecycleOwner.lifecycleScope.launch {
-        chatAdapter?.loadStateFlow?.collectLatest { loadStates ->
+        chatRoomListAdapter?.loadStateFlow?.collectLatest { loadStates ->
             binding.chatProgress.visibility =
                 if (loadStates.refresh is LoadState.Loading) View.VISIBLE else View.INVISIBLE
             if (loadStates.refresh is LoadState.NotLoading) {
                 binding.chatProgress.visibility =
                     View.INVISIBLE
             }
-            if (loadStates.refresh is LoadState.Error) {
-                Log.d("ChatFragment TEST", loadStates.refresh.toString())
-            }
         }
     }
 
     override fun onDestroyView() {
         _binding = null
-        chatAdapter = null
+        chatRoomListAdapter = null
         super.onDestroyView()
     }
 }

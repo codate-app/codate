@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.view.chat.ChatFragment">
+        tools:context=".presentation.view.chat.ChatRoomListFragment">
 
         <com.google.android.material.progressindicator.CircularProgressIndicator
             android:id="@+id/chat_progress"

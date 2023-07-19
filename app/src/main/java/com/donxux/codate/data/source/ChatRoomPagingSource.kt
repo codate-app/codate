@@ -2,27 +2,27 @@ package com.donxux.codate.data.source
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.donxux.codate.domain.model.Chat
+import com.donxux.codate.domain.model.ChatRoom
 import com.donxux.codate.domain.model.Pagable
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromJsonElement
 
 @Suppress("TooGenericExceptionCaught")
-class ChatPagingSource : PagingSource<Int, Chat>() {
-    override fun getRefreshKey(state: PagingState<Int, Chat>): Int? {
+class ChatRoomPagingSource : PagingSource<Int, ChatRoom>() {
+    private val json = Json { ignoreUnknownKeys = true }
+
+    override fun getRefreshKey(state: PagingState<Int, ChatRoom>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             val anchorPage = state.closestPageToPosition(anchorPosition)
             anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
         }
     }
 
-    private val json = Json { ignoreUnknownKeys = true }
-
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Chat> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ChatRoom> {
         return try {
             val page = params.key ?: 1
             val response: Pagable = json.decodeFromString(testChatJson[page - 1])
-            val data: List<Chat> = json.decodeFromJsonElement(response.data)
+            val data: List<ChatRoom> = json.decodeFromJsonElement(response.data)
             val nextKey = if (response.hasNext.not()) {
                 null
             } else {

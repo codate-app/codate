@@ -35,7 +35,7 @@ class MatchingFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?,
+        savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMatchingBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(requireActivity())[MatchingViewModel::class.java]
@@ -66,17 +66,17 @@ class MatchingFragment : Fragment() {
         binding.matchingSearchPartnerCardsPager.adapter = partnerCardsAdapter
 
         binding.matchingSearchPartnerCardsPager.registerOnPageChangeCallback(object :
-            OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                if (position == partners.size) {
-                    viewModel.updatePartners()
-                    viewModel.setCurrentPartner(0)
-                } else {
-                    viewModel.setCurrentPartner(position)
+                OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    if (position == partners.size) {
+                        viewModel.updatePartners()
+                        viewModel.setCurrentPartner(0)
+                    } else {
+                        viewModel.setCurrentPartner(position)
+                    }
                 }
-            }
-        })
+            })
 
         lifecycleScope.launch {
             viewModel.partners.collect {
